@@ -4,6 +4,7 @@ import uuid
 from datetime import datetime
 
 
+
 class BaseModel:
     """A base class for all hbnb models"""
     def __init__(self, *args, **kwargs):
@@ -13,8 +14,23 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            if not args:
+                storage.new(self)
+            
+        if args:
+            for i in range(1, len(args[0])):
+                if args[0][i] != self.__class__.__name__:
+                    splited_key_pair = args[0][i].split("=")
+                    if (splited_key_pair[0] not in dir(self.__class__)): #dir is desined for ojbects
+                        pass
+                    else:
+                        setattr(self, splited_key_pair[0] , splited_key_pair[1].replace('"', ''))
+                        # not using replace will relsult in \ around " " of string in son file
+            else:
+                pass
+
             storage.new(self)
-        else:
+        if kwargs:
             kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'],
                                                      '%Y-%m-%dT%H:%M:%S.%f')
             kwargs['created_at'] = datetime.strptime(kwargs['created_at'],
