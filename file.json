@@ -239,5 +239,75 @@
         "latitude": "37.773972",
         "longitude": "-122.431297",
         "__class__": "Place"
+    },
+    "State.9278fb38-6a51-4621-9aec-502633341685": {
+        "id": "9278fb38-6a51-4621-9aec-502633341685",
+        "created_at": "2024-04-16T03:41:20.341621",
+        "updated_at": "2024-04-16T03:41:20.341635",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.8cd76d45-4181-4f6a-80cd-ede84b3bc4ae": {
+        "id": "8cd76d45-4181-4f6a-80cd-ede84b3bc4ae",
+        "created_at": "2024-04-16T03:41:20.343300",
+        "updated_at": "2024-04-16T03:41:20.343307",
+        "name": "Nevada",
+        "__class__": "State"
+    },
+    "State.42eb6f75-accd-42d0-a6cc-1618195d3fa2": {
+        "id": "42eb6f75-accd-42d0-a6cc-1618195d3fa2",
+        "created_at": "2024-04-16T03:42:52.930740",
+        "updated_at": "2024-04-16T03:42:52.930745",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.e810776c-82f2-4c27-b337-7dfd7fb646fb": {
+        "id": "e810776c-82f2-4c27-b337-7dfd7fb646fb",
+        "created_at": "2024-04-16T03:42:52.931985",
+        "updated_at": "2024-04-16T03:42:52.931988",
+        "name": "Nevada",
+        "__class__": "State"
+    },
+    "State.864ff932-b4e6-4e5c-87c2-8134610de6a3": {
+        "id": "864ff932-b4e6-4e5c-87c2-8134610de6a3",
+        "created_at": "2024-04-16T03:43:26.495876",
+        "updated_at": "2024-04-16T03:43:26.495878",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.589b4a8b-c327-4aaf-bf0f-ff0f45890733": {
+        "id": "589b4a8b-c327-4aaf-bf0f-ff0f45890733",
+        "created_at": "2024-04-16T03:43:26.497565",
+        "updated_at": "2024-04-16T03:43:26.497567",
+        "name": "Nevada",
+        "__class__": "State"
+    },
+    "State.06c587a6-be99-4f73-9465-299e2b483309": {
+        "id": "06c587a6-be99-4f73-9465-299e2b483309",
+        "created_at": "2024-04-16T03:44:01.202262",
+        "updated_at": "2024-04-16T03:44:01.202272",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.9ee57684-d852-47b2-ac32-48ac5c5e4276": {
+        "id": "9ee57684-d852-47b2-ac32-48ac5c5e4276",
+        "created_at": "2024-04-16T03:44:01.203569",
+        "updated_at": "2024-04-16T03:44:01.203573",
+        "name": "Nevada",
+        "__class__": "State"
+    },
+    "State.213ce669-c396-4b75-96d4-bc880934afc0": {
+        "id": "213ce669-c396-4b75-96d4-bc880934afc0",
+        "created_at": "2024-04-16T03:44:13.824135",
+        "updated_at": "2024-04-16T03:44:13.824138",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.50154205-11ec-49df-a365-6e5530318904": {
+        "id": "50154205-11ec-49df-a365-6e5530318904",
+        "created_at": "2024-04-16T03:44:13.825943",
+        "updated_at": "2024-04-16T03:44:13.825949",
+        "name": "Nevada",
+        "__class__": "State"
     }
 }
