@@ -2,41 +2,37 @@
 """This module defines a base class for all models in our hbnb clone"""
 import uuid
 from datetime import datetime
+from sqlalchemy.orm import declarative_base
 
 
+time = "%Y-%m-%dT%H:%M:%S.%f"
+
+Base = declarative_base()
 
 class BaseModel:
     """A base class for all hbnb models"""
     def __init__(self, *args, **kwargs):
-        """Instatntiates a new model"""
-        if not kwargs:
-            from models import storage
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
-            if not args:
-                storage.new(self)
-            
-        if args:
-            for i in range(1, len(args[0])):
-                if args[0][i] != self.__class__.__name__:
-                    splited_key_pair = args[0][i].split("=")
-                    if (splited_key_pair[0] not in dir(self.__class__)): #dir is desined for ojbects
-                        pass
-                    else:
-                        setattr(self, splited_key_pair[0] , splited_key_pair[1].replace('"', ''))
-                        # not using replace will relsult in \ around " " of string in son file
-            else:
-                pass
-
-            storage.new(self)
+        """Initialization of the base model"""
+        
+        self.created_at = datetime.utcnow()
+        self.updated_at = datetime.utcnow()
+        
         if kwargs:
-            kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'],
-                                                     '%Y-%m-%dT%H:%M:%S.%f')
-            kwargs['created_at'] = datetime.strptime(kwargs['created_at'],
-                                                     '%Y-%m-%dT%H:%M:%S.%f')
-            del kwargs['__class__']
-            self.__dict__.update(kwargs)
+            if kwargs.get("id", None) is None:
+                print("case 1")
+                self.id = str(uuid.uuid4())  
+            else:
+                print ("case 2")
+                self.id = kwargs["id"]
+            
+            for key, value in kwargs.items():
+                if key != '__class__' and key != "created_at" and key != "updated_at" and key != "id":
+                    print (key)
+                    setattr(self, key, value)
+        else:
+            print ("case 3 ")
+            self.id = str(uuid.uuid4())
+
 
     def __str__(self):
         """Returns a string representation of the instance"""
@@ -47,6 +43,7 @@ class BaseModel:
         """Updates updated_at with current time when instance is changed"""
         from models import storage
         self.updated_at = datetime.now()
+        storage.new(self)
         storage.save()
 
     def to_dict(self):
