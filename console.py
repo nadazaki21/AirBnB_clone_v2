@@ -133,7 +133,7 @@ class HBNBCommand(cmd.Cmd):
                 if value[0] == '"':
                     value = value.strip('"').replace("_", " ")
                 dict_of_parameters[key] = value
-
+            #print(dict_of_parameters)
             new_instance = HBNBCommand.classes[parameters[0]](**dict_of_parameters)
             new_instance.save()
             print(new_instance.id)
