@@ -35,7 +35,7 @@ class BaseModel:
                 self.id = kwargs["id"]
             
             for key, value in kwargs.items():
-                print("inside for loop")
+                #print("inside for loop")
                 if key != '__class__' and key != "created_at" and key != "updated_at" and key != "id":
                     # print("first condition satisfied")
                     if key in dir(self.__class__):
