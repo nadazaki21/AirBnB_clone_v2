@@ -4,6 +4,11 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey, Integer, Float
 from sqlalchemy.orm import relationship
 from models.review import Review
+from dotenv import load_dotenv
+from os import getenv
+
+load_dotenv()
+
 
 class Place(BaseModel, Base):
     """ A place to stay """
@@ -24,6 +29,8 @@ class Place(BaseModel, Base):
 
     cities = relationship("City", back_populates="places")
     
-    def reviews_by_id(self):
-        """ Return the list of Review instances with place_id equals to the current Place.id """
-        return [review for review in Review.query().all() if review.place_id == self.id]
+    if getenv("HBNB_TYPE_STORAGE") != "db":
+        @property
+        def reviews_by_id(self):
+            """ Return the list of Review instances with place_id equals to the current Place.id """
+            return [review for review in Review.query().all() if review.place_id == self.id]
