@@ -21,5 +21,7 @@ class State(BaseModel, Base):
     if getenv("HBNB_TYPE_STORAGE") != "db":
         @property
         def cities(self):
-            """ Return the list of City instances with state_id equals to the current State.id """
+            """ getter attribute cities that returns the list of City instances
+            with state_id equals to the current State.id => It will be the FileStorage
+            relationship between State and City """
             return [city for city in City.query().all() if city.state_id == self.id]
