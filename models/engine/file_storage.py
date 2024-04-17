@@ -24,16 +24,18 @@ class FileStorage:
                     'State': State, 'City': City, 'Amenity': Amenity,
                     'Review': Review
                   }
-        required_objs = {}
+        required_objs = []
         if cls:
-            #cls = cls.split(' ')[0]  # remove possible trailing args
-            if cls.__name__ not in classes.keys():
+            
+            if cls not in classes.keys():
                 print("** class doesn't exist **")
                 return
             for key, value in FileStorage.all().items():
-                if key.split('.')[0] == cls.__name__:
-                    print(key.split('.')[0])
-                    required_objs[key] = value
+                if key.split('.')[0] == cls:
+                    #print(key.split('.')[0])
+                    required_objs.append(value)
+                    #print(value)
+                #print (required_objs)
             return required_objs
         else:
             return FileStorage.__objects
@@ -60,7 +62,7 @@ class FileStorage:
         from models.city import City
         from models.amenity import Amenity
         from models.review import Review
-
+        
         classes = {
                     'BaseModel': BaseModel, 'User': User, 'Place': Place,
                     'State': State, 'City': City, 'Amenity': Amenity,
@@ -76,6 +78,8 @@ class FileStorage:
                         self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
+        
+        # print("priting what's isnnide objetcts" + str(self.all()))
 
     def delete(self, obj=None):
         if obj == None:

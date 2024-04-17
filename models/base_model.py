@@ -19,18 +19,15 @@ class BaseModel:
         
         if kwargs:
             if kwargs.get("id", None) is None:
-                print("case 1")
                 self.id = str(uuid.uuid4())  
             else:
-                print ("case 2")
                 self.id = kwargs["id"]
             
             for key, value in kwargs.items():
                 if key != '__class__' and key != "created_at" and key != "updated_at" and key != "id":
-                    print (key)
-                    setattr(self, key, value)
+                    if key in dir(self.__class__):
+                        setattr(self, key, value)
         else:
-            print ("case 3 ")
             self.id = str(uuid.uuid4())
 
 
