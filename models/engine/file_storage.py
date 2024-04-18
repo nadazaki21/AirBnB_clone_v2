@@ -9,7 +9,7 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
-    @classmethod
+    
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
         from models.base_model import BaseModel
@@ -31,12 +31,17 @@ class FileStorage:
         }
         required_objs = {}
         if cls:
-
-            if cls not in classes.keys():
+            
+            if cls not in classes.values():
                 print("** class doesn't exist **")
                 return
-            for key, value in FileStorage.all().items():
-                if key.split(".")[0] == cls:
+            #print( "case 2 satisfied")
+            for key, value in FileStorage.all(self).items():
+                # print("here" +  key.split(".")[0])
+                # print("here" + str(cls.__name__))
+                if key.split(".")[0] == cls.__name__:
+                    #print("here" +  key.split(".")[0])
+                    #print("here" + cls)
                     required_objs[key] = value
             return required_objs
         else:

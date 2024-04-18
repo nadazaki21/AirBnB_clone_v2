@@ -1,51 +1,16 @@
 {
-    "State.72381891-a72f-445c-bbd7-e0df3dc8312b": {
-        "created_at": "2024-04-18T16:19:02.560069",
-        "updated_at": "2024-04-18T16:19:02.560072",
-        "id": "72381891-a72f-445c-bbd7-e0df3dc8312b",
-        "name": "cali",
-        "__class__": "State"
-    },
-    "State.1080cfab-d06d-4635-885b-87d4f2a34fa2": {
-        "created_at": "2024-04-18T16:19:02.560091",
-        "updated_at": "2024-04-18T16:19:02.560093",
-        "id": "1080cfab-d06d-4635-885b-87d4f2a34fa2",
+    "State.604cc159-e260-41b7-97e2-fc401192b51a": {
+        "created_at": "2024-04-18T18:01:03.087587",
+        "updated_at": "2024-04-18T18:01:03.087591",
+        "id": "604cc159-e260-41b7-97e2-fc401192b51a",
         "name": "California",
         "__class__": "State"
     },
-    "State.4925152c-0076-4595-8a21-2cba5a6985ba": {
-        "created_at": "2024-04-18T16:19:02.560103",
-        "updated_at": "2024-04-18T16:19:02.560105",
-        "id": "4925152c-0076-4595-8a21-2cba5a6985ba",
-        "name": "California",
+    "State.add98160-fb71-4112-ac5e-8a2c67e2c9a6": {
+        "created_at": "2024-04-18T18:01:03.088239",
+        "updated_at": "2024-04-18T18:01:03.088242",
+        "id": "add98160-fb71-4112-ac5e-8a2c67e2c9a6",
+        "name": "Nevada",
         "__class__": "State"
-    },
-    "State.df81a3ba-bc86-4835-9b1e-aa7f574cf8e3": {
-        "created_at": "2024-04-18T16:19:02.560113",
-        "updated_at": "2024-04-18T16:19:02.560115",
-        "id": "df81a3ba-bc86-4835-9b1e-aa7f574cf8e3",
-        "name": "Arizona",
-        "__class__": "State"
-    },
-    "State.cfa849be-c234-4a3f-9c4c-7c7267d33e80": {
-        "created_at": "2024-04-18T16:19:02.560123",
-        "updated_at": "2024-04-18T16:19:02.560125",
-        "id": "cfa849be-c234-4a3f-9c4c-7c7267d33e80",
-        "__class__": "State"
-    },
-    "Place.f9bb973f-6f82-495a-828d-8088890e25fc": {
-        "created_at": "2024-04-18T16:19:02.560130",
-        "updated_at": "2024-04-18T16:19:02.560133",
-        "id": "f9bb973f-6f82-495a-828d-8088890e25fc",
-        "city_id": "0001",
-        "user_id": "0001",
-        "name": "My little house",
-        "number_rooms": "4",
-        "number_bathrooms": "2",
-        "max_guest": "10",
-        "price_by_night": "300",
-        "latitude": "37.773972",
-        "longitude": "-122.431297",
-        "__class__": "Place"
     }
 }
