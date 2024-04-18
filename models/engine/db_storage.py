@@ -75,7 +75,6 @@ class DBStorage:
                 query_obj = self.__session.query(the_class).all()
                 for item in query_obj:
                     result_dict[item.__class__.__name__ + "." + item.id] = item
-            #print(result_dict)
             return result_dict
                     
             
@@ -85,10 +84,10 @@ class DBStorage:
             else:
                 query_obj = self.__session.query(model_classes[cls]).all()
 
-            result_list = []
+            result_list = {}
 
             for item in query_obj:
-                result_list.append(item)
+                result_list[item.id] = item
 
             return result_list
 

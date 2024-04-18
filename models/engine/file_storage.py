@@ -29,7 +29,7 @@ class FileStorage:
             "Amenity": Amenity,
             "Review": Review,
         }
-        required_objs = []
+        required_objs = {}
         if cls:
 
             if cls not in classes.keys():
@@ -37,10 +37,7 @@ class FileStorage:
                 return
             for key, value in FileStorage.all().items():
                 if key.split(".")[0] == cls:
-                    # print(key.split('.')[0])
-                    required_objs.append(value)
-                    # print(value)
-                # print (required_objs)
+                    required_objs[key] = value
             return required_objs
         else:
             return FileStorage.__objects
@@ -95,7 +92,7 @@ class FileStorage:
         obj is equal to None, the method should not do anything"""
         if obj == None:
             return
-        for key in self.all().keys():
+        for key, value in self.all().items():
             if key.split(".")[1] == obj.id:
                 del self.all()[key]
                 break
