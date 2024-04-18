@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """ City Module for HBNB project """
-from models.base_model import BaseModel, Base, getenv ,load_dotenv
+from models.base_model import BaseModel, Base, getenv #,load_dotenv
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 from models.state import State
 
-load_dotenv()
+# load_dotenv()
 
 if getenv("HBNB_TYPE_STORAGE")=="db":
     class City(BaseModel, Base):

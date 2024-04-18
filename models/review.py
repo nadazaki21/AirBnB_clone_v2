@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """ Review module for the HBNB project """
-from models.base_model import BaseModel, Base, getenv, load_dotenv
+from models.base_model import BaseModel, Base, getenv#, load_dotenv
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 
-load_dotenv()
+# load_dotenv()
 
 if getenv("HBNB_TYPE_STORAGE")=="db":
     class Review(BaseModel, Base):

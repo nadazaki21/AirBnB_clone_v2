@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """ State Module for HBNB project """
-from models.base_model import BaseModel, Base, getenv, load_dotenv
+from models.base_model import BaseModel, Base, getenv#, load_dotenv
 from sqlalchemy import Column, String
 
-load_dotenv()
+# load_dotenv()
 
 if getenv("HBNB_TYPE_STORAGE")=="db":
         
