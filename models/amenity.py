@@ -11,12 +11,11 @@ if getenv("HBNB_TYPE_STORAGE")=="db":
     class Amenity(BaseModel, Base):
         """class that represents Amenities in the system"""
 
-        from models.place import association_table
-
+        
         __tablename__ = "amenities"
         name = Column(String(128), nullable=False)
         place_amenities = relationship(
-            "Place", secondary=association_table,viewonly=False
+            "Place", secondary="place_amenity",viewonly=False
         )
 
 else:
