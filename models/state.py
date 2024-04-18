@@ -3,7 +3,8 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
-
+import models
+from models.city import City
 #from dotenv import load_dotenv
 from os import getenv
 
@@ -14,19 +15,19 @@ if getenv("HBNB_TYPE_STORAGE") == "db":
     class State(BaseModel, Base):
         """ State class"""
         __tablename__ = "states"
-        @property
-        def cities(self):
-            """ getter attribute cities that returns the list of City instances
-            with state_id equals to the current State.id => It will be the FileStorage
-            relationship between State and City """
-            from models.city import City
-            return [city for city in City.query().all() if city.state_id == self.id]
-
         name = Column(String(128), nullable=False)
-        
-        cities = relationship("City", back_populates="state", cascade="all, delete-orphan")
+        cities = relationship("City", backref="state", cascade="delete")
+
 else:
     class State(BaseModel):
         """ State class """
         name = ""
+        @property
+        def cities(self):
+            """Get a list of all related City objects."""
+            city_list = []
+            for city in list(models.storage.all(City).values()):
+                if city.state_id == self.id:
+                    city_list.append(city)
+            return city_list
         
