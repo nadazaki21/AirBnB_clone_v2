@@ -15,3 +15,10 @@ storage.new(new_state)
 # new_cities.append(new_city2)
 
 storage.save()
+
+
+
+
+
+
+                                            
