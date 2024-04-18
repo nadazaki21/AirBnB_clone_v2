@@ -33,7 +33,7 @@ class FileStorage:
         if cls:
             
             if cls not in classes.values():
-                print("** class doesn't exist **")
+                #print("** class doesn't exist **")
                 return
             #print( "case 2 satisfied")
             for key, value in FileStorage.all(self).items():
