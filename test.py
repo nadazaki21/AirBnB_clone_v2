@@ -17,8 +17,3 @@ storage.new(new_state)
 storage.save()
 
 
-
-
-
-
-                                            
