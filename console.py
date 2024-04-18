@@ -233,7 +233,7 @@ class HBNBCommand(cmd.Cmd):
                 print_list.append(str(i).strip('"'))
 
         else:
-            for k, v in storage.all().items():
+            for v in storage.all().values():
                 print_list.append(str(v).strip('"'))
 
         print("[", end="")

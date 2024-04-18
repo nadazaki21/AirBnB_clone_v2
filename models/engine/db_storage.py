@@ -4,8 +4,8 @@
 """
 
 
-from sqlalchemy.orm import sessionmaker, scoped_session, relationship
-from sqlalchemy import create_engine, MetaData
+from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy import create_engine, MetaData, select
 from dotenv import load_dotenv
 from os import getenv
 from sqlalchemy.sql import text
@@ -59,37 +59,38 @@ class DBStorage:
             "Place": Place,
             "Review": Review,
         }
-
+        
         self.__engine = create_engine(
             f"mysql+mysqldb://{getenv('HBNB_MYSQL_USER')}:{getenv('HBNB_MYSQL_PWD')}@{getenv('HBNB_MYSQL_HOST')}/{getenv('HBNB_MYSQL_DB')}",
             pool_pre_ping=True,
         )
 
-        Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        self.__session = scoped_session(Session)
+        session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        Session = scoped_session(session_factory)
+        self.__session = Session()
 
         if cls is None:
-            query_obj = (
-                self.__session.query(User)
-                .union_all(self.__session.query(State))
-                .union_all(self.__session.query(City))
-                .union_all(self.__session.query(Amenity))
-                .union_all(self.__session.query(Place))
-                .union_all(self.__session.query(Review))
-                .all()
-            )
+            result_dict = {}
+            for the_class in model_classes.values():
+                query_obj = self.__session.query(the_class).all()
+                for item in query_obj:
+                    result_dict[item.__class__.__name__ + "." + item.id] = item
+            #print(result_dict)
+            return result_dict
+                    
+            
         else:
             if cls not in model_classes.keys():
                 return None
             else:
                 query_obj = self.__session.query(model_classes[cls]).all()
 
-        result_dict = {}
+            result_list = []
 
-        for item in query_obj:
-            result_dict[item.__class__.__name__ + "." + item.id] = item
+            for item in query_obj:
+                result_list.append(item)
 
-        return result_dict
+            return result_list
 
     def new(self, obj):
         """add the object to the current database session"""
