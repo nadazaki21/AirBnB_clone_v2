@@ -36,7 +36,7 @@ if getenv("HBNB_TYPE_STORAGE")=="db":
         # amenities = relationship("Amenity", secondary="place_amenity",
         #                         viewonly=False)
         # or 
-        amenities = relationship("Amenity", secondary=association_table, backref="place_amenities",
+        amenities = relationship("Amenity", secondary=association_table,
                                 viewonly=False)
         
         
