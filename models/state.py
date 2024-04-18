@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
-from models.city import City
+
 from dotenv import load_dotenv
 from os import getenv
 
@@ -24,4 +24,5 @@ class State(BaseModel, Base):
             """ getter attribute cities that returns the list of City instances
             with state_id equals to the current State.id => It will be the FileStorage
             relationship between State and City """
+            from models.city import City
             return [city for city in City.query().all() if city.state_id == self.id]
