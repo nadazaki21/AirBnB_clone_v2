@@ -16,6 +16,7 @@ association_table = Table("place_amenity", Base.metadata,
                                  ForeignKey("amenities.id"),
                                  primary_key=True, nullable=False))
 if getenv("HBNB_TYPE_STORAGE")=="db":
+    
     class Place(BaseModel, Base):
         """A place to stay"""
 
@@ -32,8 +33,13 @@ if getenv("HBNB_TYPE_STORAGE")=="db":
         latitude = Column(Float)
         longitude = Column(Float)
         reviews = relationship("Review", backref="place", cascade="delete")
-        amenities = relationship("Amenity", secondary="place_amenity",
+        # amenities = relationship("Amenity", secondary="place_amenity",
+        #                         viewonly=False)
+        # or 
+        amenities = relationship("Amenity", secondary=association_table, backref="place_amenities",
                                 viewonly=False)
+        
+        
         
 else:
     class Place(BaseModel):
