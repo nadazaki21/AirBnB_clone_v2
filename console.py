@@ -124,7 +124,7 @@ class HBNBCommand(cmd.Cmd):
         
         if num_of_parameters > 1:
             if parameters[0] not in HBNBCommand.classes:
-                #print("** class doesn't exist **")
+                print("** class doesn't exist **")
                 return
             
             dict_of_parameters = {}
@@ -140,7 +140,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         elif args not in HBNBCommand.classes:
-            #print("** class doesn't exist **")
+            print("** class doesn't exist **")
             return
         elif args in HBNBCommand.classes:
             new_instance = HBNBCommand.classes[args]()
