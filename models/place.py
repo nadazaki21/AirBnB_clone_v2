@@ -33,7 +33,7 @@ if getenv("HBNB_TYPE_STORAGE")=="db":
         latitude = Column(Float)
         longitude = Column(Float)
         reviews = relationship("Review", backref="place", cascade="delete")
-        amenities = relationship("Amenity", secondary="place_amenity",
+        amenities = relationship("Amenity", secondary="place_amenity", back_populates= "place_amenities",
                                 viewonly=False)
         # or 
         # amenities = relationship("Amenity", secondary=association_table,

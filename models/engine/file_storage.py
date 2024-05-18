@@ -101,3 +101,9 @@ class FileStorage:
             if key.split(".")[1] == obj.id:
                 del self.all()[key]
                 break
+    
+    def close(self):
+        """call reload() method for deserializing the JSON file to objects""
+        """
+        self.reload()
+

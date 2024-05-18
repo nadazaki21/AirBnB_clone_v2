@@ -68,10 +68,11 @@ class DBStorage:
         session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(session_factory)
         self.__session = Session()
+        
 
         if cls is None:
             result_dict = {}
-            for the_class in model_classes.values():
+            for the_class in model_classes.keys():
                 query_obj = self.__session.query(the_class).all()
                 for item in query_obj:
                     result_dict[item.__class__.__name__ + "." + item.id] = item
@@ -79,16 +80,19 @@ class DBStorage:
                     
             
         else:
-            if cls not in model_classes.keys():
+            if cls not in model_classes.values():
+                #print("** class doesn't exist **")
                 return None
             else:
-                query_obj = self.__session.query(model_classes[cls]).all()
+                #print(cls)
+                query_obj = self.__session.query(cls)
 
             result_list = {}
 
             for item in query_obj:
                 result_list[item.id] = item
-
+            
+            #print(result_list)
             return result_list
 
     def new(self, obj):
@@ -116,3 +120,7 @@ class DBStorage:
         from models.city import City
 
         Base.metadata.create_all(self.__engine)
+        
+    def close(self):
+        """ closes the session """
+        self.__session.close()
