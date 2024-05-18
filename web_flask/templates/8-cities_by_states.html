@@ -1,0 +1,17 @@
+{% extends "7-states_list.html" %}
+
+{%- block cities %} 
+        {% for key_state, value_state in states.items() | sort(attribute="name") %}
+        <LI>State: {{value_state.id}}: <B>{{value_state.name}}</B>
+            
+            <UL>
+                {% for key_city, value_city in cities.items() | sort(attribute="name") %}
+                {% if value_city.state_id == value_state.id %}
+
+                <LI> {{value_city.id}}: <B>{{value_city.name}}</B></LI>
+                {% endif %}
+                {% endfor %}
+            </UL>   
+        </LI>
+        {%endfor%}
+{% endblock -%}

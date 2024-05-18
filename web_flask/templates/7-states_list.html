@@ -6,9 +6,11 @@
     <BODY>
         
         <H1>States</H1>
-        {% for key, value in states.items() | sort(attribute="name") %}
-        <LI>State: {{value.id}}: <B>{{value.name}}</B></LI>
+        {% block cities %} 
+        {% for key_state, value_state in states.items() | sort(attribute="name") %}
+        <LI>State: {{value_state.id}}: <B>{{value_state.name}}</B></LI>
         {%endfor%}
+        {% endblock %}
         
         
     </BODY>
