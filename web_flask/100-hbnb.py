@@ -15,7 +15,10 @@ app.jinja_env.lstrip_blocks = True
 
 @app.route('/hbnb', strict_slashes=False)
 def search_filetrs():
-    return render_template("100-hbnb.html", states=storage.all(State), amenities=storage.all(Amenity), places=storage.all(Place))
+    if getenv ("HBNB_TYPE_STORAGE") == "db":
+        return render_template("100-hbnb.html", states=storage.all(State), amenities=storage.all(Amenity), places=storage.all(Place), cities=storage.all(City))
+    else:
+        return render_template("100-hbnb.html", states=storage.all(State), amenities=storage.all(Amenity), places=storage.all(Place), cities=State.cities)
 def teardown_db(exception):
     """
     Closes the storage
